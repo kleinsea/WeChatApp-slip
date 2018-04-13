@@ -1,0 +1,28 @@
+.list_border{
+  height:100rpx;
+  width:100%;
+  border-bottom:1px solid #999;
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 100rpx;
+}
+.list_msg{
+  height:100rpx;
+  width:100%;
+  position: absolute;
+  right:0;  
+  z-index: 10;
+  background-color: #eee;
+  transition: right 0.2s ease-in-out;
+}
+.list_content{
+  height:100rpx;
+  width:100%;
+}
+.list_del{
+  height:100rpx;
+  background-color: red;
+  position: absolute;
+  right:0;
+  z-index: 2;
+}
