@@ -1,8 +1,7 @@
-<view>
-  <view class="list_border" wx:for="{{list_msg}}">
-    <view class="list_msg" style="{{item.moveStyle}}" wx:key="{{index}}" bindtouchstart='t_start' bindtouchmove='t_move' bindtouchend='t_end' id="{{index}}">
-      <view class="list_content">{{item.text}}</view>
-    </view>
-    <view class="list_del" id="{{index}}" style="width:{{delWidth}}px" bindtap='delEnter'>删除</view>
+<slip>
+  <view slot="slip-center">呵呵哒</view>
+  <view slot="slip-control">
+    <view bindtap='delEnter' style="display:inline-block;">删除</view>
+    <!-- <view bindtap='delEnter' style="display:inline-block;">删除</view> -->
   </view>
-</view>
+</slip>

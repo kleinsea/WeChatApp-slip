@@ -1,0 +1,23 @@
+.slip-container{
+  height: auto;
+}
+.slip-content{
+  width: 750rpx;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.slip-control{
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position:absolute;
+  top:0;
+  right:0;
+  width: 100%;
+  z-index: 0;
+}
+.controls{
+  display: inline-block;
+}
