@@ -46,7 +46,7 @@
     this.refresh(e.currentTarget.dataset.opend)
   },
   ```
-#### 组件支持传递的参数
+#### 组件支持传递的参数<br/>
 参数 | 说明 | 类型 | 默认值 
 - | :-: | :-: |-:|
 slipBackground|组件背景色，可以设置组件的主背景色|String|#fff
