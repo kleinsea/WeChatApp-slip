@@ -26,6 +26,7 @@
 
   ```
   * js部分
+
   ```javascript
   // this.data.pro_msg为需要左划删除的数组列表
   // 因微信自定义组件不能自己监听数据变化，所以在自己需要重置显示状态时候，请调用`this.refresh()`方法手动触发重置。
@@ -46,7 +47,8 @@
     this.refresh(e.currentTarget.dataset.opend)
   },
   ```
-#### 组件支持传递的参数<br/>
+#### 组件支持传递的参数
+
 参数 | 说明 | 类型 | 默认值 
 - | :-: | :-: |-:|
 slipBackground|组件背景色，可以设置组件的主背景色|String|#fff
