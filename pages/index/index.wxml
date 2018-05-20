@@ -1,7 +1,15 @@
-<slip>
-  <view slot="slip-center">呵呵哒</view>
-  <view slot="slip-control">
-    <view bindtap='delEnter' style="display:inline-block;">删除</view>
-    <!-- <view bindtap='delEnter' style="display:inline-block;">删除</view> -->
+<slip wx:for="{{pro_msg}}" wx:key="{{index}}" id="slip{{index}}" bind:opened="opend" data-opend = "{{index}}">
+  <view slot="slip-center">
+      <view class="pro-conrainer">
+        <image src="{{item.proImg}}" class="pro-img"></image>
+        <view class="pro-content">
+          <view class="pro-header">{{item.proHeader}}</view>
+          <text class="pro-desc">{{item.proDesc}}</text>
+        </view>
+      </view>
+  </view>
+  <view slot="slip-control" class="slip-control">
+    <view bindtap='editEnter' id="{{index}}" class="btn-delete btn-edit">编辑</view> 
+    <view bindtap='delEnter(edit.id)' id="{{index}}" class="btn-delete" bindtap='delEnter'>删除</view>
   </view>
 </slip>

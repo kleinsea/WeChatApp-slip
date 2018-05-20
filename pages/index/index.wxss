@@ -1,28 +1,41 @@
-.list_border{
-  height:100rpx;
-  width:100%;
-  border-bottom:1px solid #999;
-  text-align: center;
-  font-size: 30rpx;
-  line-height: 100rpx;
+.pro-conrainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30rpx;
 }
-.list_msg{
-  height:100rpx;
-  width:100%;
-  position: absolute;
-  right:0;  
-  z-index: 10;
-  background-color: #eee;
-  transition: right 0.2s ease-in-out;
+.pro-img{
+  flex: 0 0 200rpx;
+  height: 200rpx;
 }
-.list_content{
-  height:100rpx;
-  width:100%;
+.pro-content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: #333;
+  padding: 0 20rpx;
 }
-.list_del{
-  height:100rpx;
+.pro-header{
+  font-size: 34rpx;
+  line-height: 60rpx; 
+}
+.pro-desc{
+  font-size: 28rpx;
+   line-height: 40rpx; 
+}
+.slip-control{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200rpx;
+}
+.btn-delete{
+  font-size: 32rpx;
   background-color: red;
-  position: absolute;
-  right:0;
-  z-index: 2;
+  color: #fff;
+  line-height: 200rpx;
+  padding: 0 20rpx;
+}
+.btn-edit{
+  background-color: #409EFF;
 }

@@ -1,10 +1,16 @@
-<movable-area class="slip-container" style="width:{{sysWidth+htnWidth}}px;margin-left:-{{htnWidth}}px;">
-  <movable-view style="background:{{slipBackground}}" class="slip-content" direction="horizontal" inertia="true" x="{{x}}" damping="100" disabled="{{disabled}}">
+<movable-area class="slip-container" style="width:{{sysWidth+htnWidth}}px;margin-left:-{{htnWidth}}px;" wx:if="{{show}}">
+  <movable-view style="background:{{slipBackground}}" class="slip-content" direction="horizontal" inertia="true" x="{{x}}" damping="80" disabled="{{disabled}}" bindtouchstart='t_start' bindchange='t_move' bindtouchend='t_end'>
     <slot name="slip-center"></slot>
   </movable-view>
-  <view class="slip-control">
+  <view class="slip-control" style="opacity:{{opacity}}">
     <view id="control" class="controls">
       <slot name="slip-control"></slot>
     </view>
   </view>
 </movable-area>
+<!-- 保留用于提前计算按钮组的相关信息 -->
+<view class="slip-control control-none">
+    <view id="control" class="controls">
+      <slot name="slip-control"></slot>
+    </view>
+</view>

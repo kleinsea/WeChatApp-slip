@@ -1,8 +1,9 @@
-// components/slip/slip.js
+/**
+ * 注：根据测试，`movable-area`存在bug，不能动态修改`width`/`height`/`x`的值，
+ * 故采用后渲染的方式，即 `wx-if`暂时初始化完数据后再显示文本信息
+ * ===========  等待官方解决  ==============
+ */
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
     slipBackground: {
       type: String,
@@ -12,35 +13,68 @@ Component({
       type: Boolean,
       value: false
     },
+    distance: {
+      type: Number,
+      value:0.4
+    }
   },
   options: {
-    multipleSlots: true // 在组件定义时的选项中启用多slot支持
+    multipleSlots: true
   },
-  /**
-   * 组件的初始数据
-   */
   data: {
-    sysWidth:375,
-    htnWidth:37.5,
-    x: 37.5
+    show:false,
+    startX:0,
+    hidenBtn:true
   },
-  /**
-   * 组件的方法列表
-   */
   methods: {
-
+    t_start(){
+      this.triggerEvent("opened")
+    },
+    t_move(e){
+      this.setData({
+        changeX: e.detail.x
+      })
+    },
+    t_end(e){
+      const move = this.data.startX - this.data.changeX
+      if (move>=this.data.startX * this.data.distance){
+        this.setData({
+          x:0
+        })
+      }else{
+        this.setData({
+          x: this.data.startX
+        })
+      }
+    },
+    refresh(){
+      this.setData({
+        x: this.data.startX
+      })
+    },
+    init(){
+      const self = this
+      var query = wx.createSelectorQuery().in(this)
+      query.select('#control').boundingClientRect(function (res) {
+        let sysWidth = wx.getSystemInfoSync().windowWidth
+        const htnWidth = res.width
+        self.setData({
+          sysWidth: sysWidth,
+          htnWidth: htnWidth,
+          x: htnWidth,
+          startX: htnWidth,
+          show: true
+        })
+        setTimeout(() => {
+          // 加延时，防止开始时候显示按钮组
+          self.setData({
+            opacity: 1
+          })
+        }, 300)
+      }).exec()
+    }
   },
   ready(){
-    const self = this
-    var query = wx.createSelectorQuery().in(this)
-    query.select('#control').boundingClientRect(function (res) {
-      let sysWidth = wx.getSystemInfoSync().windowWidth
-      const htnWidth = res.width
-      self.setData({
-        sysWidth: sysWidth,
-        htnWidth: htnWidth,
-        x: htnWidth
-      })
-    }).exec()
+    this.init()
   }
 })
