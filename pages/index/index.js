@@ -1,3 +1,4 @@
+let t_index = -1;
 Page({
   data: {
     pro_msg: []
@@ -52,8 +53,16 @@ Page({
       }
     })
   },
-  opend(e){
-    this.refresh(e.currentTarget.dataset.opend)
+  opend(e) {
+    // 多次点击的时候将关闭当前窗口
+    const opend = e.currentTarget.dataset ? e.currentTarget.dataset.opend : t_index
+    if (opend === t_index){
+      t_index = -1
+      return this.refresh(-1)
+    }
+    t_index = opend
+    // 只允许同时打开一个左划删除组件，当打开一个组件时，其他组件将关闭。不使用可以删除
+    return this.refresh(opend)
   },
   editEnter(e) {
     // 执行编辑操作

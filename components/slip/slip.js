@@ -3,6 +3,7 @@
  * 故采用后渲染的方式，即 `wx-if`暂时初始化完数据后再显示文本信息
  * ===========  等待官方解决  ==============
  */
+let start,end;
 Component({
   properties: {
     slipBackground: {
@@ -28,6 +29,7 @@ Component({
   },
   methods: {
     t_start(){
+      start = new Date().getTime()
       this.triggerEvent("opened")
     },
     t_move(e){
@@ -36,6 +38,9 @@ Component({
       })
     },
     t_end(e){
+      end = new Date().getTime()
+      if((end - start)<= 1000) return 
+      console.log('end')
       const move = this.data.startX - this.data.changeX
       if (move>=this.data.startX * this.data.distance){
         this.setData({
